@@ -1,36 +1,36 @@
-# ¡Reto Automatizador! ?
+# Â¡Reto Automatizador! ğŸš€
 
-Este es un proyecto de automatización de pruebas de aceptación usando **Java** como lenguaje de desarrollo, además se implementa el patrón **Screenplay** para la escritura de pruebas usando el core de **Serenity**. En este proyecto los requerimientos se escriben en lenguaje **Gherkin** con la implementación de **Cucumber** para Java.
+Este es un proyecto de automatizaciÃ³n de pruebas de aceptaciÃ³n usando **Java** como lenguaje de desarrollo, ademÃ¡s se implementa el patrÃ³n **Screenplay** para la escritura de pruebas usando el core de **Serenity**. En este proyecto los requerimientos se escriben en lenguaje **Gherkin** con la implementaciÃ³n de **Cucumber** para Java.
 
-Las pruebas están centradas en el sitio web de compras de [Falabella](https://www.falabella.com.co/falabella-co) con los siguientes escenarios:
+Las pruebas estÃ¡n centradas en el sitio web de compras de [Falabella](https://www.falabella.com.co/falabella-co) con los siguientes escenarios:
 
 - Buscar productos
 - Agregar productos al carrito
-- Ingresar información de envío
+- Ingresar informaciÃ³n de envÃ­o
 
-## Pre requisitos para ejecutar ?
+## Pre requisitos para ejecutar ğŸ“‹
 - Java version 1.8 o superior y JDK (variables de entorno configuradas).
 - Eclipse IDE o IntelliJ IDEA
 - Gradle version 6.0 o higher (variables de entorno configuradas).
 - Cucumber for Java Plugin
 - Gherkin Plugin
 
-## Ejecutar pruebas ?
+## Ejecutar pruebas ğŸ”¨
 
-La herramienta de compilación de código y administrador de dependencias para este proyecto es **Gradle**, así que pare ejecutar las pruebas use el siguiente comando en la raíz del proyecto.
+La herramienta de compilaciÃ³n de cÃ³digo y administrador de dependencias para este proyecto es **Gradle**, asÃ­ que pare ejecutar las pruebas use el siguiente comando en la raÃ­z del proyecto.
 
 	gradle clean test aggregate -i
 
-Si desea ejecutar algún Runner especifico puede usar el siguiente comando, por ejemplo para el Login.
+Si desea ejecutar algÃºn Runner especifico puede usar el siguiente comando, por ejemplo para el Login.
 
     gradle clean test --tests "LoginRunner"
 
-## Navegador Web ?
-Actualmente la automatización ejecuta por defecto con Chrome.
+## Navegador Web ğŸŒ
+Actualmente la automatizaciÃ³n ejecuta por defecto con Chrome.
 
-## Obtener el código
+## Obtener el cÃ³digo
 
-El código de la automatización está alojado en un repositorio de GitHub, para hacer uso de él puede clonarlo usando Git o descargar el archivo zip del proyecto.
+El cÃ³digo de la automatizaciÃ³n estÃ¡ alojado en un repositorio de GitHub, para hacer uso de Ã©l puede clonarlo usando Git o descargar el archivo zip del proyecto.
 
 Git:
 
@@ -40,26 +40,26 @@ Git:
 O simplemente [descargar archivo zip](https://github.com/DiegoPinzon20/Sistecredito-AutomationChallenge/archive/refs/heads/master.zip).
 
 ## Ver los informes
-El comando proporcionado anteriormente para la ejecución de las pruebas, generará un informe de prueba de Serenity **index.html** en el directorio target/site/serenity. Adicionalmente, puede encontrar evidencias generadas por Cucumber en la ruta **target/serenity-reports**, son los siguientes archivos:
+El comando proporcionado anteriormente para la ejecuciÃ³n de las pruebas, generarÃ¡ un informe de prueba de Serenity **index.html** en el directorio target/site/serenity. Adicionalmente, puede encontrar evidencias generadas por Cucumber en la ruta **target/serenity-reports**, son los siguientes archivos:
 
-- **rerun.txt**: Archivo de texto con la información de la línea donde falló el caso para su revisión.
+- **rerun.txt**: Archivo de texto con la informaciÃ³n de la lÃ­nea donde fallÃ³ el caso para su revisiÃ³n.
 - **serenity-html-report.html**: Reporte generado con el resultado de cada uno de los pasos del feature incluido en las pruebas.
-- **serenity-summary.html**: Este reporte es un resumen muy general sobre los resultados de la ejecución, si desea obtenerlo ejecute el comando:
+- **serenity-summary.html**: Este reporte es un resumen muy general sobre los resultados de la ejecuciÃ³n, si desea obtenerlo ejecute el comando:
   ```gradle reports```
 
-## Construido con ?
-La automatización fue desarrollada con:
+## Construido con ğŸ› 
+La automatizaciÃ³n fue desarrollada con:
 - BDD - Estrategia de desarrollo basada en el comportamiento
-- Screenplay - Patrón de diseño de escritura de pruebas
+- Screenplay - PatrÃ³n de diseÃ±o de escritura de pruebas
 - Gradle - Administrador del proyecto, dependencias y plugins
 - Selenium Web Driver - Herramienta para interactuar con navegadores web
-- Cucumber - Implementación de lenguaje Gherkin para java
-- Serenity BDD - Librería de código abierto para escribir pruebas de aceptación automatizadas
-- Gherkin - Lenguaje DSL de lectura empresarial (lenguaje específico de dominio)
+- Cucumber - ImplementaciÃ³n de lenguaje Gherkin para java
+- Serenity BDD - LibrerÃ­a de cÃ³digo abierto para escribir pruebas de aceptaciÃ³n automatizadas
+- Gherkin - Lenguaje DSL de lectura empresarial (lenguaje especÃ­fico de dominio)
 
-## Versionamiento ?
-Se usó Git para el control de versiones. ?
+## Versionamiento ğŸ“Œ
+Se usÃ³ Git para el control de versiones. ğŸ”€
 
-## Autor ?
+## Autor ğŸ‘¨
 
-**Diego Pinzón** - [diegopip62@gmail.com]()
+**Diego PinzÃ³n** - [diegopip62@gmail.com]()
