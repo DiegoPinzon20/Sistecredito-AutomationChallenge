@@ -3,9 +3,7 @@ package com.sistecredito.certification.stepdefinitions.add_products;
 import com.sistecredito.certification.exceptions.ValidationProductName;
 import com.sistecredito.certification.exceptions.ValidationQuantity;
 import com.sistecredito.certification.models.ProductModel;
-import com.sistecredito.certification.questions.TheMessageSearch;
 import com.sistecredito.certification.questions.TheProductName;
-import com.sistecredito.certification.questions.TheProductNotAvailable;
 import com.sistecredito.certification.questions.TheQuantityItems;
 import com.sistecredito.certification.tasks.NavigateToWebsite;
 import com.sistecredito.certification.tasks.SearchProduct;
@@ -15,15 +13,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.ensure.Ensure;
-import net.serenitybdd.screenplay.questions.WebElementQuestion;
 
-import static com.sistecredito.certification.ui.BasketPageElements.PRODUCT_NAME;
-import static com.sistecredito.certification.utils.constants.Constants.ZERO_NUMBER;
 import static com.sistecredito.certification.utils.constants.WebPageLinks.FALABELLA_PAGE;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isNotVisible;
 import static org.hamcrest.Matchers.containsStringIgnoringCase;
 import static org.hamcrest.Matchers.equalTo;
 

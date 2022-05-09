@@ -5,12 +5,10 @@ import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import net.serenitybdd.screenplay.questions.Attribute;
+import net.serenitybdd.screenplay.questions.Text;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static com.sistecredito.certification.ui.PopupOfAddedProducts.*;
-import static com.sistecredito.certification.ui.ProductInformationPage.COUNTER_ITEMS_ONCART;
-import static com.sistecredito.certification.utils.constants.Constants.ATTRIBUTE_COUNT_ITEMS_ON_CART;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.containsOnlyText;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
@@ -27,7 +25,7 @@ public class SelectQuantity implements Interaction {
     public <T extends Actor> void performAs(T actor) {
         boolean flag = true;
         while (flag) {
-            if (quantity == Attribute.of(COUNTER_ITEMS_ONCART).named(ATTRIBUTE_COUNT_ITEMS_ON_CART).asInteger().answeredBy(actor)) {
+            if (quantity == Text.of(QUANTITY_TO_ADD).asInteger().answeredBy(actor)) {
                 flag = false;
             } else if (quantity == 0) {
                 actor.attemptsTo(
