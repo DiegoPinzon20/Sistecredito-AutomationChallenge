@@ -18,7 +18,7 @@ public class SearchProduct implements Task {
     }
 
     @Override
-    public <T extends Actor> void performAs(T actor) {d
+    public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Enter.theValue(productName).into(INPUT_SEARCH).then(Click.on(BUTTON_SEARCH))
         );
