@@ -8,13 +8,13 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features/make_falabella_purchase.feature",
         glue = "com.sistecredito.certification.stepdefinitions",
-//        tags = "@CompleteAddressInformation",
+        tags = "@EmptySearch",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         plugin = {
                 "pretty",
-                "html:target/serenity-reports/make_alabella_purchase/serenity-html-report.html",
-                "rerun:target/serenity-reports/make_alabella_purchase/rerun.txt"
+                "html:target/serenity-reports/empty_search/serenity-html-report.html",
+                "rerun:target/serenity-reports/empty_search/rerun.txt"
         }
 )
-public class MakePurchaseFalabellaRunner {
+public class EmptySearchRunner {
 }
