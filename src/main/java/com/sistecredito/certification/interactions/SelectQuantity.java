@@ -5,15 +5,14 @@ import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.questions.Attribute;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import static com.sistecredito.certification.ui.PopupOfAddedProducts.ALERT_DONT_AVAILABLE;
-import static com.sistecredito.certification.ui.PopupOfAddedProducts.INCREMENT_BUTTON;
+import static com.sistecredito.certification.ui.PopupOfAddedProducts.*;
 import static com.sistecredito.certification.ui.ProductInformationPage.COUNTER_ITEMS_ONCART;
-import static net.serenitybdd.core.Serenity.getDriver;
+import static com.sistecredito.certification.utils.constants.Constants.ATTRIBUTE_COUNT_ITEMS_ON_CART;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.containsOnlyText;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
 
 public class SelectQuantity implements Interaction {
@@ -26,11 +25,17 @@ public class SelectQuantity implements Interaction {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        WebElement counterElement = getDriver().findElement(By.xpath(COUNTER_ITEMS_ONCART.getCssOrXPathSelector()));
-
-        while (true) {
-            if (quantity == Integer.parseInt(counterElement.getAttribute("data-count"))) {
-                break;
+        boolean flag = true;
+        while (flag) {
+            if (quantity == Attribute.of(COUNTER_ITEMS_ONCART).named(ATTRIBUTE_COUNT_ITEMS_ON_CART).asInteger().answeredBy(actor)) {
+                flag = false;
+            } else if (quantity == 0) {
+                actor.attemptsTo(
+                        WaitUntil.the(DECREMENT_BUTTON, isEnabled()).forNoMoreThan(10).seconds(),
+                        Click.on(DECREMENT_BUTTON).afterWaitingUntilEnabled(),
+                        WaitUntil.the(QUANTITY_TO_ADD, containsOnlyText(String.valueOf(quantity)))
+                );
+                flag = false;
             } else {
                 actor.attemptsTo(
                         WaitUntil.the(INCREMENT_BUTTON, isEnabled()).forNoMoreThan(10).seconds(),
@@ -40,7 +45,8 @@ public class SelectQuantity implements Interaction {
             }
         }
     }
-    public static Performable withProduct(int quantity){
+
+    public static Performable withProduct(int quantity) {
         return instrumented(SelectQuantity.class, quantity);
     }
 }
