@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.annotations.Subject;
 
 import static com.sistecredito.certification.ui.MainPageElements.EMPTY_SEARCH_SMS;
 
-@Subject("the product name of item on cart")
+@Subject("the message empty search")
 public class TheMessageSearch implements Question<Boolean> {
 
     @Override

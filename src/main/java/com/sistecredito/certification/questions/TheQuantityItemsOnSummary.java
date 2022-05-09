@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import static com.sistecredito.certification.ui.OrderSummary.QUANTITY_PRODUCT_SUMMARY;
 
-@Subject("the quantity items on cart")
+@Subject("the quantity items on summary of purchase")
 public class TheQuantityItemsOnSummary implements Question<Integer> {
 
     private static final Logger LOGGER = LogManager.getLogger(TheQuantityItemsOnSummary.class);
