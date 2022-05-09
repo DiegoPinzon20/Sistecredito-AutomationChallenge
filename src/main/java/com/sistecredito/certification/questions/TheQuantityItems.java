@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static com.sistecredito.certification.ui.BasketPageElements.BASKET_ITEM_COUNTER;
+import static com.sistecredito.certification.ui.BasketPageElements.MSG_PROMOTIONS;
 
 @Subject("the quantity items on cart")
 public class TheQuantityItems implements Question<Integer> {
@@ -17,11 +18,13 @@ public class TheQuantityItems implements Question<Integer> {
     @Override
     public Integer answeredBy(Actor actor) {
         int currentQuantity = Text.of(BASKET_ITEM_COUNTER).asInteger().answeredBy(actor);
+        currentQuantity = MSG_PROMOTIONS.isVisibleFor(actor) ? currentQuantity - 1 : currentQuantity;
+
         LOGGER.info("{} sees in the basket {} added products", actor.getName(), currentQuantity);
         return currentQuantity;
     }
 
-    public static TheQuantityItems onCart(){
+    public static TheQuantityItems onCart() {
         return new TheQuantityItems();
     }
 }

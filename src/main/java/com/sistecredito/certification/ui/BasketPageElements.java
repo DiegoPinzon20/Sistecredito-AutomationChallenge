@@ -12,4 +12,5 @@ public class BasketPageElements extends PageObject {
     public static final Target BASKET_ITEM_COUNTER = Target.the("Boton para ir a la bolsa de compras").locatedBy("//i[contains(@class, 'count') and contains(@class, 'basket')]");
     public static final Target CHECKOUT_BUTTON = Target.the("Checkout button").locatedBy("//button[contains(@class,'js-fb-continue-purchase') or text() = 'Ir a comprar']");
     public static final Target TITLE_SHOPPING_BAG = Target.the("Checkout button").locatedBy("//*[text()='Bolsa de Compras' and contains(@class, 'title')]");
+    public static final Target MSG_PROMOTIONS = Target.the("Message promotions products").locatedBy("//h3[text()='Promociones']");
 }

@@ -55,10 +55,10 @@ Feature: Make a purchase at Falabella online
         | <expectedQuantity> | <expectedTitle> |
 
       Examples:
-        | productName | expectedQuantity | expectedTitle |
-        | Bolso mujer | 2                | Bolso         |
-        | Perfume     | 5                | Perfume       |
-        | +/Reloj*    | 1                | reloj         |
+        | productName              | expectedQuantity | expectedTitle |
+        | Perfume Carolina Herrera | 2                | Perfume       |
+        | Almohada                 | 5                | Almohada      |
+        | +/Llavero*               | 1                | llavero       |
 
   Rule: To finalize the purchase the user must enter the shipping information
 
