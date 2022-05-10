@@ -96,11 +96,5 @@ pipeline {
         to: 'diegopip62@gmail.com, dquintero@grupohdi.com',
         mimeType: 'text/html'
     }
-
-    failure {
-      mail to: 'diegopip62@gmail.com',
-       subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-       body: "Something is wrong with ${env.BUILD_URL}"
-    }
   }
 }
