@@ -46,7 +46,7 @@ pipeline {
       steps {
         script {
           def gradleCommandBasic = './gradlew clean build test aggregate -i'
-          def gradleCommandJustOneTest = './gradlew clean test --tests "EmptySearchRunner"'
+          def gradleCommandJustOneTest = './gradlew clean build test --tests "EmptySearchRunner"'
           if (isUnix()) {
             sh gradleCommandJustOneTest
           } else {
