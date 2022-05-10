@@ -98,9 +98,9 @@ pipeline {
     }
 
     failure {
-      //mail to: 'diegopip62@gmail.com',
-      // subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-      // body: "Something is wrong with ${env.BUILD_URL}"
+      mail to: 'diegopip62@gmail.com',
+       subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+       body: "Something is wrong with ${env.BUILD_URL}"
     }
   }
 }
