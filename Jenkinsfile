@@ -31,7 +31,7 @@ pipeline {
 
     stage("Quality Gate") {
       steps {
-        timeout(time: 2, unit: 'MINUTES') {
+        timeout(time: 5, unit: 'MINUTES') {
           script {
             def qg = waitForQualityGate()
             if (qg.status != 'OK') {
@@ -45,12 +45,11 @@ pipeline {
     stage('Gradle Build Artifact And Run Test') {
       steps {
         script {
-          def gradleCommandBasic = './gradlew clean build test aggregate -i'
-          def gradleCommandJustOneTest = './gradlew clean build test --tests "EmptySearchRunner"'
+          def gradleCommandExecuteTests = './gradlew clean build test aggregate -i'
           if (isUnix()) {
-            sh gradleCommandJustOneTest
+            sh gradleCommandExecuteTests
           } else {
-            bat gradleCommandJustOneTest
+            bat gradleCommandExecuteTests
           }
         }
       }
