@@ -57,6 +57,7 @@ pipeline {
   }
 
   post {
+    
     always {
       publishHTML(
         [allowMissing: false,
@@ -72,11 +73,18 @@ pipeline {
         fingerprint: true
       junit "build/test-results/test/*.xml"
     }
-
+    
     failure {
-      mail to: 'diegopip62@gmail.com',
-        subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-        body: "Something is wrong with ${env.BUILD_URL}"
+      //mail to: 'diegopip62@gmail.com',
+       // subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+       // body: "Something is wrong with ${env.BUILD_URL}"
+      
+      emailext attachLog: true, attachmentsPattern: '*_log.txt', body: 'Echa un vistazo al reporte generado de la prueba.', subject: 'Sistecredito-AutomationChallenge [FAILURE]', to: 'diegopip62@gmail.com, dquintero@grupohdi.com'
+    }
+    success {
+      emailext attachLog: true, attachmentsPattern: '*_log.txt', body: 'Echa un vistazo al reporte generado de la prueba.', subject: 'Sistecredito-AutomationChallenge [SUCCESS]', to: 'diegopip62@gmail.com, dquintero@grupohdi.com'
     }
   }
+
+}
 }
