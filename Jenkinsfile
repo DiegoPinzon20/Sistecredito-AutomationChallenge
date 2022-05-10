@@ -46,10 +46,24 @@ pipeline {
       steps {
         script {
           def gradleCommandBasic = './gradlew clean build test aggregate -i'
+          def gradleCommandJustOneTest './gradlew clean test --tests "EmptySearchRunner"'
           if (isUnix()) {
-            sh gradleCommandBasic
+            sh gradleCommandJustOneTest
           } else {
-            bat gradleCommandBasic
+            bat gradleCommandJustOneTest
+          }
+        }
+      }
+    }
+
+    stage('Generate summary report') {
+      steps {
+        script {
+          def generateSummaryReport = './gradlew reports'
+          if (isUnix()) {
+            sh generateSummaryReport
+          } else {
+            bat generateSummaryReport
           }
         }
       }
@@ -57,7 +71,7 @@ pipeline {
   }
 
   post {
-    
+
     always {
       publishHTML(
         [allowMissing: false,
@@ -68,23 +82,26 @@ pipeline {
           reportName: 'HTML Report'
         ]
       )
+      
       archiveArtifacts artifacts: "build/libs/*.jar",
         allowEmptyArchive: true,
         fingerprint: true
+      
       junit "build/test-results/test/*.xml"
+      
+      emailext attachLog: true,
+        attachmentsPattern: 'target/site/serenity/serenity-summary.html', 
+        body: 'Echa un vistazo al reporte generado de la prueba.', 
+        subject: '[Sistecredito-AutomationChallenge] $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', 
+        to: 'diegopip62@gmail.com, dquintero@grupohdi.com',
+        mimeType: 'text/html'
     }
-    
+
     failure {
       //mail to: 'diegopip62@gmail.com',
-       // subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-       // body: "Something is wrong with ${env.BUILD_URL}"
-      
-      emailext attachLog: true, attachmentsPattern: '*_log.txt', body: 'Echa un vistazo al reporte generado de la prueba.', subject: 'Sistecredito-AutomationChallenge [FAILURE]', to: 'diegopip62@gmail.com, dquintero@grupohdi.com'
-    }
-    success {
-      emailext attachLog: true, attachmentsPattern: '*_log.txt', body: 'Echa un vistazo al reporte generado de la prueba.', subject: 'Sistecredito-AutomationChallenge [SUCCESS]', to: 'diegopip62@gmail.com, dquintero@grupohdi.com'
+      // subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+      // body: "Something is wrong with ${env.BUILD_URL}"
     }
   }
-
 }
 }
